@@ -595,6 +595,9 @@ Finally, we want to be able to save our new creation to a file. To do so, you ca
 # ╔═╡ 3db09d92-64cc-11eb-0333-45193c0fd1fe
 save("reduced_phil.png", reduced_image)
 
+# ╔═╡ 1a3ed052-703e-11eb-1302-e13379ccfafc
+save("resized_phil.png", resized_philip)
+
 # ╔═╡ 61606acc-6bcc-11eb-2c80-69ceec9f9702
 md"""
 # $(html"<br>")   
@@ -655,6 +658,10 @@ Matrices, or two-dimensional arrays, also use square brackets, but with spaces a
 [RGB(1, 0, 0)  RGB(0, 1, 0)
  RGB(0, 0, 1)  RGB(0.5, 0.5, 0.5)]
 
+# ╔═╡ 558cbe18-703f-11eb-0834-5535978e5783
+[RGB(1, 0.53, 0) RGB(0.5,0.4,0.5)
+ RGB(0.23, 0.122, 0.5) RGB(0.6, 0, 0)]
+
 # ╔═╡ 0f35603a-64d4-11eb-3baf-4fef06d82daa
 md"""
 
@@ -668,8 +675,14 @@ Let's start with all the possible colors interpolating between black, `RGB(0, 0,
 A neat method to do this is an **array comprehension**. Again we use square brackets  to create an array, but now we use a **variable** that varies over a given **range** values:
 """
 
+# ╔═╡ a1c1d3a4-703f-11eb-34d9-25982599508c
+@bind c Slider(0:0.1:1)
+
+# ╔═╡ e823b1de-703f-11eb-37ea-6b746f0bdf54
+@bind l Slider(0:0.1:1)
+
 # ╔═╡ e69b02c6-64d6-11eb-02f1-21c4fb5d1043
-[RGB(x, 0, 0) for x in 0:0.1:1]
+[RGB(x, c, l) for x in 0:0.1:1]
 
 # ╔═╡ fce76132-64d6-11eb-259d-b130038bbae6
 md"""
@@ -752,6 +765,18 @@ md"""
 
 > Make three sliders with variables `r`, `g` and `b`. Then make a single color patch with the RGB color given by those values.
 """
+
+# ╔═╡ 4b1915f2-7040-11eb-1256-558460d7e0c5
+@bind r Slider(0:0.1:1)
+
+# ╔═╡ 597552bc-7040-11eb-1fd2-9537943864d5
+@bind g Slider(0:0.1:1)
+
+# ╔═╡ 5c5af1f0-7040-11eb-28d0-bbdca98fcc18
+@bind b Slider(0:0.1:1)
+
+# ╔═╡ 5f23df5a-7040-11eb-3a97-33f6f04e681f
+RGB(r,g,b)
 
 # ╔═╡ 576d5e3a-64d8-11eb-10c9-876be31f7830
 md"""
@@ -1269,11 +1294,12 @@ md"_Lecture 1, Spring 2021, version 0_"
 # ╠═ae542fe4-64cc-11eb-29fc-73b7a66314a9
 # ╟─c29292b8-64cc-11eb-28db-b52c46e865e6
 # ╟─41659fad-a895-43b2-9218-8dde7ab4b3d5
-# ╠═073e078e-7dc4-44c2-a80f-867e8ef87a54
+# ╟─073e078e-7dc4-44c2-a80f-867e8ef87a54
 # ╠═7dfbd2dc-4eb8-4a0f-91b8-3ea28fdbbf4a
 # ╟─7b04331a-6bcb-11eb-34fa-1f5b151e5510
 # ╟─5319c03c-64cc-11eb-0743-a1612476e2d3
 # ╠═3db09d92-64cc-11eb-0333-45193c0fd1fe
+# ╠═1a3ed052-703e-11eb-1302-e13379ccfafc
 # ╟─61606acc-6bcc-11eb-2c80-69ceec9f9702
 # ╟─dd183eca-6018-11eb-2a83-2fcaeea62942
 # ╟─8ddcb286-602a-11eb-3ae0-07d3c77a0f8c
@@ -1281,7 +1307,10 @@ md"_Lecture 1, Spring 2021, version 0_"
 # ╠═1b2b2b18-64d4-11eb-2d43-e31cb8bc25d1
 # ╟─2b0e6450-64d4-11eb-182b-ff1bd515b56f
 # ╠═3b2b041a-64d4-11eb-31dd-47d7321ee909
+# ╠═558cbe18-703f-11eb-0834-5535978e5783
 # ╟─0f35603a-64d4-11eb-3baf-4fef06d82daa
+# ╠═a1c1d3a4-703f-11eb-34d9-25982599508c
+# ╠═e823b1de-703f-11eb-37ea-6b746f0bdf54
 # ╠═e69b02c6-64d6-11eb-02f1-21c4fb5d1043
 # ╟─fce76132-64d6-11eb-259d-b130038bbae6
 # ╟─17a69736-64d7-11eb-2c6c-eb5ebf51b285
@@ -1300,6 +1329,10 @@ md"_Lecture 1, Spring 2021, version 0_"
 # ╟─1c539b02-64d8-11eb-3505-c9288357d139
 # ╟─10f6e6da-64d8-11eb-366f-11f16e73043b
 # ╟─82a8314c-64d8-11eb-1acb-e33625381178
+# ╠═4b1915f2-7040-11eb-1256-558460d7e0c5
+# ╠═597552bc-7040-11eb-1fd2-9537943864d5
+# ╠═5c5af1f0-7040-11eb-28d0-bbdca98fcc18
+# ╠═5f23df5a-7040-11eb-3a97-33f6f04e681f
 # ╟─576d5e3a-64d8-11eb-10c9-876be31f7830
 # ╠═2a94a2cf-b697-4b0b-afd0-af2e35af2bb1
 # ╠═3e0ece65-b8a7-4be7-ae44-6d7210c2e15b
